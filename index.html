@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- 🔒 SECURITY HEADERS (ISO 27001 A.14.2 / OWASP) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="index, follow">
+    
+    <title>PS-AD-Arsenal | Enterprise AD Automation & AI Security</title>
+    <meta name="description" content="Enterprise-grade PowerShell automation & security toolkit for Active Directory. Dual offensive/defensive approach.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <header class="glass-header">
+        <div class="logo">🛡️ PS-AD-Arsenal</div>
+        <nav>
+            <a href="#terminal">Terminal</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#modules">Modules</a>
+            <a href="#compliance">Compliance</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section: Typewriter Terminal -->
+        <section id="terminal" class="hero-section">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">Administrator: Windows PowerShell (PS-AD-Arsenal)</span>
+                </div>
+                <div class="terminal-body">
+                    <div id="typewriter-output"></div>
+                    <span class="cursor">_</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section: Mermaid Diagram -->
+        <section id="architecture" class="section-container fade-in">
+            <h2 class="section-title">System Architecture & AI Pipeline</h2>
+            <p class="section-subtitle">Automated Dual-Approach Workflow (Offensive/Defensive)</p>
+            
+            <div class="mermaid-container glass-card">
+                <div class="mermaid">
+                    graph TD
+                        A[CSV Data / Threat Intel] -->|Ingest| B(PowerShell AI Engine)
+                        B --> C{Module Routing}
+                        
+                        C -->|Deploy| D[AD DS Hardening]
+                        C -->|Deceive| E[Honeypot / Honey Token]
+                        C -->|Automate| F[Mass User Provisioning]
+                        
+                        D --> G[Secure Baseline / CIS]
+                        E --> H[Threat Detection / SIEM]
+                        F --> I[Audit Logs / ISO 27001]
+                        
+                        G --> J[(Active Directory)]
+                        H --> J
+                        I --> J
+                        
+                        J --> K[Azure AD Connect / Hybrid Cloud]
+                        J --> L[Windows Server Backup]
+                        
+                        style A fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff
+                        style B fill:#0f172a,stroke:#10b981,stroke-width:3px,color:#10b981
+                        style J fill:#1e293b,stroke:#f59e0b,stroke-width:2px,color:#fff
+                </div>
+            </div>
+        </section>
+
+        <!-- Modules Section -->
+        <section id="modules" class="section-container fade-in">
+            <h2 class="section-title">Core Arsenal Modules</h2>
+            <div class="grid-cards">
+                <div class="card glass-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Module 01: ADDS Hardening</h3>
+                    <p>Automated secure baseline deployment. Disables SMBv1, enforces strict lockout policies, and renames default admins.</p>
+                    <span class="tag blue-team">Blue Team</span>
+                </div>
+                <div class="card glass-card">
+                    <div class="card-icon"></div>
+                    <h3>Module 02: Honeypot & Deception</h3>
+                    <p>Early warning system. Deploys high-value Honey Tokens to detect lateral movement and internal threats.</p>
+                    <span class="tag red-team">Red/Blue Team</span>
+                </div>
+                <div class="card glass-card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Module 03: Mass Automation</h3>
+                    <p>High-volume provisioning with RBAC and immutable forensic logging for compliance auditing.</p>
+                    <span class="tag devops">DevOps</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compliance Section -->
+        <section id="compliance" class="section-container fade-in">
+            <h2 class="section-title">Security & Compliance Standards</h2>
+            <div class="compliance-grid">
+                <div class="compliance-item">
+                    <h4>ISO/IEC 27001:2022</h4>
+                    <p>Annex A.8, A.9 (Access Control) & A.12 (Operations Security).</p>
+                </div>
+                <div class="compliance-item">
+                    <h4>NIST SP 800-53</h4>
+                    <p>AC-2 (Account Management) & AU-2 (Audit Events).</p>
+                </div>
+                <div class="compliance-item">
+                    <h4>OWASP Top 10</h4>
+                    <p>Client-side mitigations: CSP, X-Frame-Options, Strict Referrer.</p>
+                </div>
+                <div class="compliance-item">
+                    <h4>Ley N° 29733 (Perú)</h4>
+                    <p>Data protection and secure handling of PII (DNI/RUC).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 PS-AD-Arsenal. Developed by [Tu Nombre] | SENATI Dual Program. Licensed under MIT.</p>
+    </footer>
+
+    <!-- Mermaid JS (Loaded securely via CDN) -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        //  CRITICAL: securityLevel 'strict' prevents XSS in Mermaid diagrams
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'dark', 
+            securityLevel: 'strict',
+            flowchart: { curve: 'basis' } 
+        });
+    </script>
+    
+    <!-- App Logic -->
+    <script src="assets/js/app.js" defer></script>
+</body>
+</html>
