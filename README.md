@@ -593,15 +593,16 @@ $Credential = Get-Credential
 
  ## 👨‍💻 Author
 
- **\[Your Full Name\]**
+ **\[ _IT Support Engineering Student | SENATI_\
+ _Aspiring SecOps / Identity & Access Management Engineer_\]**
 
  _IT Support Engineering Student | SENATI_\
  _Aspiring SecOps / Identity & Access Management Engineer_
 
- - 📧 Email: `[your.email@example.com]`
-- 💼 LinkedIn: `[your-linkedin-profile]`
-- 🌐 Portfolio: `[your-portfolio-url]`
-- 🐙 GitHub: `[your-github-profile]`
+ - 📧 Email: `[webdev.student123@outlook.com]`
+- 💼 LinkedIn: `[https://linkedln/in/joaquinocampo-cybersecurity]`
+- 🌐 Portfolio: `[https://cyberzenithai.github.io/CyberShield-Portfolio/]`
+- 🐙 GitHub: `[https://github.com/CyberZenithAI]`
 
 ---
 
