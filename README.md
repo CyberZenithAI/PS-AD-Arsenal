@@ -1,501 +1,622 @@
-🛡️ PS-AD-Arsenal
-Enterprise Active Directory Automation & Security Toolkit
-<p align="center">
+ # 🛡️ PS-AD-Arsenal
 
-PowerShell • Active Directory Domain Services • Security Hardening • Automation • Auditing • SecOps
+ ### Enterprise Active Directory Automation & Security Toolkit
 
-</p> <p align="center">
+ **PowerShell • Active Directory Domain Services • Security Hardening • Automation • Auditing • SecOps**
 
+ \
+ \
+ \
+ \
+ \
 
+---
 
+ ## 📌 Overview
 
+ **PS-AD-Arsenal** is a PowerShell-based toolkit for **Active Directory Domain Services (AD DS)** administration, security hardening, automation, auditing, and controlled security testing.
 
+ The project follows a **Blue Team / Red Team mindset**, combining infrastructure automation with defensive security practices to help administrators and security practitioners build more consistent, auditable, and resilient Windows environments.
 
+ The toolkit is intended for:
 
-</p>
-📌 Overview
+ - Active Directory administration
+- Windows Server hardening
+- Identity and Access Management (IAM)
+- User and group provisioning
+- Security auditing
+- Honeypot and deception concepts
+- PowerShell automation
+- SecOps and security engineering laboratories
+- Educational and controlled enterprise environments
 
-PS-AD-Arsenal is a PowerShell-based toolkit designed for Active Directory Domain Services (AD DS) administration, security hardening, automation, auditing, and controlled security testing.
+ > **Project philosophy:** Automate repetitive administrative tasks, reduce configuration drift, increase visibility, and apply security controls consistently.
 
-The project follows a Blue Team / Red Team mindset, combining infrastructure automation with defensive security practices to help administrators and security practitioners build more consistent, auditable, and resilient Windows environments.
+---
 
-🎯 Intended Use
+ ## 🎯 Project Goals
 
-The toolkit is designed for:
+ PS-AD-Arsenal focuses on five core objectives:
 
-Active Directory administration
+ 1. **Automate** repetitive Active Directory administration tasks.
+2. **Harden** Windows and AD DS environments using documented security practices.
+3. **Audit** configuration and administrative activity.
+4. **Detect** suspicious interaction with controlled deception mechanisms.
+5. **Document** infrastructure changes for operational and compliance purposes.
 
-Windows Server hardening
+---
 
-Identity and Access Management (IAM)
+ ## ⚔️ Core Modules
 
-User and group provisioning
+ ### 🛡️ Module 01 — AD DS Hardening
 
-Security auditing
+ **Blue Team / Infrastructure Security**
 
-Honeypot and deception concepts
+ Automates selected security-hardening tasks for Windows Server and Active Directory environments.
 
-PowerShell automation
+ #### Capabilities
 
-SecOps and security engineering laboratories
+ - Configures selected password and account-lockout policies.
+- Applies configurable security baselines.
+- Disables legacy services or protocols when appropriate.
+- Supports administrative account hardening.
+- Performs configuration checks before applying changes.
+- Generates execution and change logs.
+- Designed for controlled testing before production deployment.
 
-Educational and controlled enterprise environments
+ #### Security Objective
 
-Project Philosophy: Automate repetitive administrative tasks, reduce configuration drift, increase visibility, and apply security controls consistently.
+ Reduce unnecessary attack surface and improve the security baseline of domain infrastructure.
 
-🎯 Project Goals
+ > **Important:** Hardening recommendations should be validated against organizational requirements and tested before production deployment.
 
-PS-AD-Arsenal focuses on five core objectives:
+---
 
-Objective	Description
-⚙️ Automate	Reduce repetitive Active Directory administration tasks.
-🛡️ Harden	Apply documented security-hardening practices.
-🔎 Audit	Improve visibility into configuration and administrative activity.
-🎣 Detect	Create controlled detection opportunities through deception mechanisms.
-📋 Document	Maintain traceability of infrastructure changes and operations.
-⚔️ Core Modules
-🛡️ Module 01 — AD DS Hardening
+ ### 🎣 Module 02 — Honeypot & Deception
 
-Blue Team / Infrastructure Security
+ **Blue Team / Threat Detection**
 
-Automates selected security-hardening tasks for Windows Server and Active Directory environments.
+ Provides controlled deception mechanisms designed to generate security telemetry when a monitored account or resource is accessed.
 
-Capabilities
+ #### Capabilities
 
-Configures selected password and account-lockout policies.
+ - Creates a dedicated monitored account or resource.
+- Applies controlled auditing configurations.
+- Generates security events when defined interactions occur.
+- Supports integration with security monitoring workflows.
+- Helps identify potentially suspicious internal activity.
 
-Applies configurable security baselines.
+ #### Security Objective
 
-Disables legacy services or protocols when appropriate.
+ Create additional detection opportunities for unauthorized access and lateral-movement activity.
 
-Supports administrative account hardening.
+ > **Operational note:** Honeypot accounts must be carefully isolated and monitored to avoid creating unnecessary security or operational risks.
 
-Performs configuration checks before applying changes.
+---
 
-Generates execution and change logs.
+ ### ⚙️ Module 03 — Mass Automation & Auditing
 
-Designed for controlled testing before production deployment.
+ **SysAdmin / DevOps / IAM**
 
-Security Objective
+ Automates repetitive Active Directory provisioning tasks while maintaining execution traceability.
+
+ #### Capabilities
 
-Reduce unnecessary attack surface and improve the security baseline of domain infrastructure.
+ - Bulk Organizational Unit creation.
+- Bulk group creation.
+- Bulk user provisioning from CSV.
+- Group membership assignment.
+- Role-Based Access Control (**RBAC**) workflows.
+- Input validation.
+- Error handling.
+- Execution logging.
+- Repeatable provisioning workflows.
 
-⚠️ Important: Hardening recommendations should be validated against organizational requirements and tested before production deployment.
+ #### Security Objective
 
-🎣 Module 02 — Honeypot & Deception
+ Improve consistency and traceability during large-scale identity administration.
 
-Blue Team / Threat Detection
+---
 
-Provides controlled deception mechanisms designed to generate security telemetry when a monitored account or resource is accessed.
+ ## 🏗️ Architecture
 
-Capabilities
+ Mermaid flowchart: CSV / Requirements, PowerShell Automation Engine, Module Selection, AD DS Hardening, Honeypot / Honey Token, Mass User Automation, Security & Configuration Audit, Security Baseline, Detection Telemetry, Identity Lifecycle, Audit Evidence, (Active Directory), SIEM / Monitoring, Backup & Recovery, Hybrid Identity
 
-Creates a dedicated monitored account or resource.
+---
 
-Applies controlled auditing configurations.
+ ## 🔄 Operational Workflow
 
-Generates security events when defined interactions occur.
+```
+┌───────────────────────────────┐
+│      Requirements / CSV       │
+└───────────────┬───────────────┘
+                │
+                ▼
+┌───────────────────────────────┐
+│    PowerShell Automation      │
+│            Engine             │
+└───────────────┬───────────────┘
+                │
+       ┌────────┼────────┐
+       ▼        ▼        ▼
+   Hardening  Deception  IAM
+       │        │        │
+       └────────┼────────┘
+                ▼
+┌───────────────────────────────┐
+│      Active Directory         │
+│             AD DS             │
+└───────────────┬───────────────┘
+                │
+       ┌────────┼─────────┐
+       ▼        ▼         ▼
+    Auditing   SIEM     Backup
+```
 
-Supports integration with security monitoring workflows.
+---
 
-Helps identify potentially suspicious internal activity.
+ ## 🔐 Security Principles
 
-Security Objective
+ PS-AD-Arsenal is designed around the following principles:
 
-Create additional detection opportunities for unauthorized access and lateral-movement activity.
+ - **Least Privilege**
+- **Defense in Depth**
+- **Secure by Default**
+- **Identity-Centric Security**
+- **Configuration Consistency**
+- **Auditability**
+- **Change Traceability**
+- **Controlled Automation**
+- **Separation of Administrative Responsibilities**
 
-⚠️ Operational Note: Honeypot accounts must be carefully isolated and monitored to avoid creating unnecessary security or operational risks.
+---
 
-⚙️ Module 03 — Mass Automation & Auditing
+ ## 📜 Framework & Compliance Mapping
 
-SysAdmin / DevOps / IAM
+ The project can be used to support controls and practices related to:
 
-Automates repetitive Active Directory provisioning tasks while maintaining execution traceability.
+ ### ISO/IEC 27001:2022
 
-Capabilities
+ Relevant areas may include:
 
-Bulk Organizational Unit creation.
+ - Access control
+- Identity management
+- Authentication information
+- Logging and monitoring
+- Configuration management
+- Operational security
 
-Bulk group creation.
+ ### NIST
 
-Bulk user provisioning from CSV.
+ Potential mappings include concepts related to:
 
-Group membership assignment.
+ - **AC — Access Control**
+- **IA — Identification and Authentication**
+- **AU — Audit and Accountability**
+- **CM — Configuration Management**
+- **SI — System and Information Integrity**
 
-Role-Based Access Control (RBAC) workflows.
+ ### CIS Benchmarks
 
-Input validation.
+ The toolkit can complement configuration-hardening practices for supported Windows Server environments.
 
-Error handling.
+ ### 🇵🇪 Peru — Ley N.° 29733
 
-Execution logging.
+ The project may support technical and organizational security practices related to protecting personal information when deployed as part of an appropriately designed organizational security program.
 
-Repeatable provisioning workflows.
+ > **Disclaimer:** PS-AD-Arsenal is not a certification or compliance product. Framework mappings are provided as technical guidance and must be validated against the organization's applicable requirements, scope, and policies.
 
-Security Objective
+---
 
-Improve consistency, scalability, and traceability during large-scale identity administration.
+ ## 🖥️ Supported Environment
 
-🏗️ Architecture
-📄 Requirements / CSV
-⚙️ PowerShell Automation Engine
-Module Selection
-🛡️ AD DS Hardening
-🎣 Honeypot / Deception
-👥 Mass IAM Automation
-(🏢 Active Directory AD DS)
-🔎 Auditing
-📊 SIEM / Monitoring
-💾 Backup & Recovery
-🔄 Operational Workflow
-┌──────────────────────────────────┐
-│       Requirements / CSV         │
-└────────────────┬─────────────────┘
-                 │
-                 ▼
-┌──────────────────────────────────┐
-│     PowerShell Automation        │
-│             Engine               │
-└────────────────┬─────────────────┘
-                 │
-        ┌────────┼────────┐
-        ▼        ▼        ▼
-   ┌────────┐ ┌────────┐ ┌────────┐
-   │Hardening│ │Deception│ │  IAM   │
-   └────┬────┘ └────┬────┘ └────┬───┘
-        │           │           │
-        └───────────┼───────────┘
-                    ▼
-        ┌────────────────────────┐
-        │     Active Directory   │
-        │          AD DS         │
-        └────────────┬───────────┘
-                     │
-          ┌──────────┼──────────┐
-          ▼          ▼          ▼
-      ┌────────┐ ┌────────┐ ┌────────┐
-      │Auditing│ │  SIEM  │ │ Backup │
-      └────────┘ └────────┘ └────────┘
+ ### Operating Systems
 
-🔐 Security Principles
+ - Windows Server 2019
+- Windows Server 2022
+- Windows Server 2025
+- Windows 10/11 for supported administrative tooling and laboratory scenarios
 
-PS-AD-Arsenal is designed around the following security principles:
+ ### Required Components
 
-🔑 Least Privilege
+ - PowerShell 5.1+ or compatible PowerShell version
+- Active Directory Domain Services
+- RSAT / Active Directory PowerShell module
+- Appropriate administrative privileges
+- Domain-joined or management workstation where required
 
-🛡️ Defense in Depth
+ ### Recommended Lab Environment
 
-🔒 Secure by Default
+```
+┌─────────────────────────────┐
+│ Windows Server Domain       │
+│                             │
+│ ├── Domain Controller       │
+│ ├── DNS                     │
+│ ├── Active Directory        │
+│ └── Test OUs / Users        │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│ Windows Administration VM   │
+│                             │
+│ ├── PowerShell              │
+│ ├── RSAT                    │
+│ └── PS-AD-Arsenal           │
+└─────────────────────────────┘
+```
 
-👤 Identity-Centric Security
+---
 
-⚙️ Configuration Consistency
+ ## 🚀 Quick Start
 
-🔎 Auditability
+ ### 1\. Clone the Repository
 
-📝 Change Traceability
+```
+git clone https://github.com/[YOUR_USERNAME]/PS-AD-Arsenal.git
+cd PS-AD-Arsenal
+```
 
-🤖 Controlled Automation
+ ### 2\. Review the Repository
 
-🧩 Separation of Administrative Responsibilities
+ Before executing any script:
 
-📜 Framework & Compliance Mapping
+```
+Get-ChildItem -Recurse
+```
 
-PS-AD-Arsenal can be used as a technical implementation reference for security practices related to several frameworks and standards.
+ Review the source code and understand every change that the selected module will perform.
 
-ISO/IEC 27001:2022
+ ### 3\. Verify PowerShell
 
-Potentially relevant areas include:
+```
+$PSVersionTable
+```
 
-Access control
+ ### 4\. Verify the Active Directory Module
 
-Identity management
+```
+Get-Module -ListAvailable ActiveDirectory
+```
 
-Authentication information
+ If required:
 
-Logging and monitoring
+```
+Import-Module ActiveDirectory
+```
 
-Configuration management
+ ### 5\. Execute a Module
 
-Operational security
+ Example:
 
-NIST Cybersecurity Concepts
+```
+.\Scripts\01-ADDS-Hardening.ps1
+```
 
-Potential mappings include:
+ > **Security recommendation:** Always test scripts in an isolated lab environment before applying configuration changes to production Active Directory.
 
-NIST Area	Related Concept
-AC	Access Control
-IA	Identification & Authentication
-AU	Audit & Accountability
-CM	Configuration Management
-SI	System & Information Integrity
-CIS Benchmarks
+---
 
-The toolkit can complement configuration-hardening practices for supported Windows Server environments.
+ ## 📁 Repository Structure
 
-🇵🇪 Peru — Ley N.° 29733
-
-The project may support technical and organizational security practices related to the protection of personal information when deployed as part of an appropriately designed organizational security program.
-
-Disclaimer: PS-AD-Arsenal is not a certification or compliance product. Framework mappings are provided as technical guidance and must be validated against the organization's applicable requirements, scope, policies, and regulatory obligations.
-
-🖥️ Supported Environment
-Operating Systems
-
-Windows Server 2019
-
-Windows Server 2022
-
-Windows Server 2025
-
-Windows 10
-
-Windows 11
-
-Windows 10/11 are intended primarily for supported administrative tooling and laboratory scenarios.
-
-Required Components
-
-PowerShell 5.1+ or compatible PowerShell version
-
-Active Directory Domain Services
-
-RSAT / Active Directory PowerShell module
-
-Appropriate administrative privileges
-
-Domain-joined or management workstation where required
-
-📁 Repository Structure
+```
 PS-AD-Arsenal/
 │
-├── 📂 Scripts/
+├── README.md
+├── LICENSE
+├── .gitignore
+│
+├── Scripts/
 │   ├── 01-ADDS-Hardening.ps1
 │   ├── 02-Honeypot-Deception.ps1
-│   └── 03-Mass-Automation.ps1
+│   ├── 03-Mass-Provisioning.ps1
+│   └── 04-AD-Audit.ps1
 │
-├── 📂 Config/
-│   └── configuration files
+├── Config/
+│   ├── hardening.json
+│   └── provisioning.csv
 │
-├── 📂 Data/
-│   └── users.csv
+├── Logs/
+│   └── .gitkeep
 │
-├── 📂 Logs/
-│   └── execution logs
+├── Docs/
+│   ├── Architecture.md
+│   ├── Hardening.md
+│   ├── Honeypot.md
+│   └── Provisioning.md
 │
-├── 📂 Documentation/
-│   └── technical documentation
-│
-├── 📄 README.md
-├── 📄 LICENSE
-└── 📄 .gitignore
+└── Tests/
+    ├── Hardening.Tests.ps1
+    └── Provisioning.Tests.ps1
+```
 
+---
 
-Adjust the structure above to match the actual repository contents.
+ ## 🧪 Testing Strategy
 
-🚀 Quick Start
-1. Clone the Repository
-git clone https://github.com/[TU_USUARIO]/PS-AD-Arsenal.git
-cd PS-AD-Arsenal
+ The project should follow a controlled testing lifecycle:
 
-2. Review the Repository
+```
+Development
+     │
+     ▼
+Static Review
+     │
+     ▼
+Lab Environment
+     │
+     ▼
+Functional Testing
+     │
+     ▼
+Security Validation
+     │
+     ▼
+Change Review
+     │
+     ▼
+Production Deployment
+```
 
-Before executing any script, review the source code and understand every change that the selected module may perform.
+ Recommended validation areas:
 
-Get-ChildItem -Recurse
+ - Syntax validation
+- Parameter validation
+- Permission validation
+- Error handling
+- Rollback considerations
+- Logging verification
+- Active Directory object validation
+- Security-event verification
+- Idempotency where applicable
 
-3. Verify PowerShell
-$PSVersionTable
+---
 
-4. Verify the Active Directory Module
-Get-Module -ListAvailable ActiveDirectory
+ ## 📊 Logging & Auditability
 
+ Scripts should provide sufficient information to understand:
 
-Import the module:
+ - What operation was executed.
+- When the operation was executed.
+- Which target was affected.
+- Whether the operation succeeded or failed.
+- Relevant error information.
+- Administrative context where appropriate.
 
-Import-Module ActiveDirectory
+ Example:
 
-5. Execute a Module
-
-Example:
-
-.\Scripts\01-ADDS-Hardening.ps1
-
-
-⚠️ Security Recommendation: Always test scripts in an isolated laboratory environment before applying configuration changes to a production Active Directory environment.
-
-📊 Logging & Auditability
-
-Scripts are designed to provide sufficient information to understand:
-
-What operation was executed.
-
-When the operation was executed.
-
-Which target was affected.
-
-Whether the operation succeeded or failed.
-
-Relevant errors generated during execution.
-
-Example
+```
 [2026-09-24 09:00:12] INFO  Starting provisioning workflow
 [2026-09-24 09:00:13] INFO  Validating CSV input
 [2026-09-24 09:00:14] INFO  Creating organizational units
+[2026-09-24 09:00:15] INFO  Creating security groups
 [2026-09-24 09:00:16] INFO  Creating user accounts
 [2026-09-24 09:00:18] INFO  Workflow completed
+```
 
-🧠 Development Methodology: AI-Assisted Engineering
+---
 
-This project was developed using a modern AI-augmented engineering workflow.
+ ## 🧠 Blue Team + Red Team Mindset
 
-As an IT Support Engineering student with foundational knowledge of PowerShell, I used Prompt Engineering with AI tools, including Qwen, as a development aid for scripting, documentation, and problem-solving.
+ PS-AD-Arsenal follows a **dual security mindset**.
 
-My Role in the Project
-1. 🏗️ Architecture & Logic Design
+ ### 🔵 Blue Team
 
-Defined the project's:
+ Focuses on:
 
-Security requirements
+ - Prevention
+- Hardening
+- Monitoring
+- Logging
+- Detection
+- Incident visibility
+- Identity security
 
-Operational workflows
+ ### 🔴 Red Team
 
-Module structure
+ Provides an adversarial perspective through controlled security testing and deception scenarios.
 
-Automation objectives
+ Focuses on:
 
-Compliance considerations
+ - Attack-surface awareness
+- Lateral-movement concepts
+- Credential exposure scenarios
+- Detection validation
+- Security-control testing
 
-2. 🧠 Prompt Engineering
+ ### 🟣 Purple Team Perspective
 
-Created context-rich prompts to assist with:
+ The combination creates a continuous security feedback loop:
 
-PowerShell scripting
+```
+Attack Scenario
+      │
+      ▼
+Detection Opportunity
+      │
+      ▼
+Security Control
+      │
+      ▼
+Validation
+      │
+      ▼
+Improvement
+      │
+      └──────────────► Repeat
+```
 
-Error handling
+ The objective is not to build offensive tooling for uncontrolled environments, but to use adversarial thinking to improve defensive security.
 
-Automation logic
+---
 
-Documentation
+ ## 🔒 Security Considerations
 
-Security considerations
+ This repository can modify identity and security configurations.
 
-Code improvement
+ Before using it:
 
-3. 🔎 Validation & Testing
+ - Test in a dedicated laboratory.
+- Review every script before execution.
+- Use least-privilege administrative accounts where possible.
+- Maintain backups and recovery procedures.
+- Document production changes.
+- Validate compatibility with existing Group Policies.
+- Avoid hardcoding credentials.
+- Never commit passwords, tokens, private keys, or secrets.
+- Review generated logs before publishing them publicly.
 
-Reviewed and tested generated solutions in an isolated Active Directory laboratory environment, focusing on:
+ ### 🚨 Never Commit Secrets
 
-Expected behavior
+ Do **not** place credentials directly inside scripts:
 
-Configuration impact
+```
+# ❌ Never do this
+$Password = "MyRealPassword123!"
+```
 
-Error handling
+ Prefer secure credential handling:
 
-Repeatability
+```
+$Credential = Get-Credential
+```
 
-Safety
+ Use `.gitignore` to prevent accidental publication of sensitive files.
 
-Alignment with documented requirements
+---
 
-4. 📚 Documentation
+ ## 📋 Roadmap
 
-Structured the repository and documented:
+ ### Phase 1 — Foundation
 
-Architecture
+ - [x] Repository architecture
+- [x] Initial README
+- [ ] Core PowerShell modules
+- [ ] Logging framework
+- [ ] Configuration management
 
-Operational workflows
+ ### Phase 2 — Security
 
-Security considerations
+ - [ ] AD DS hardening module
+- [ ] Security auditing module
+- [ ] Honeypot/deception module
+- [ ] Event validation
+- [ ] Baseline comparison
 
-Installation requirements
+ ### Phase 3 — Engineering
 
-Usage instructions
+ - [ ] Pester tests
+- [ ] CI validation
+- [ ] PowerShell ScriptAnalyzer integration
+- [ ] Documentation improvements
+- [ ] Error-handling standardization
 
-Development methodology
+ ### Phase 4 — Enterprise
 
-Engineering Principle: AI-generated code is treated as an engineering aid—not as a substitute for human review, testing, security validation, or operational responsibility.
+ - [ ] SIEM integration examples
+- [ ] Microsoft Sentinel integration examples
+- [ ] Hybrid identity scenarios
+- [ ] Reporting
+- [ ] Configuration drift detection
 
-This workflow demonstrates how modern IT professionals can combine foundational scripting knowledge with AI-assisted development to build, understand, validate, and document infrastructure automation solutions.
+---
 
-🔒 Security Considerations
+ ## 🧰 Technology Stack
 
-Before using PS-AD-Arsenal:
+ | Technology | Purpose |
+| --- | --- |
+| **PowerShell** | Automation and administration |
+| **Active Directory Domain Services** | Identity and directory services |
+| **Windows Server** | Infrastructure platform |
+| **RSAT** | Administrative tooling |
+| **Pester** | PowerShell testing |
+| **Git / GitHub** | Version control |
+| **SIEM** | Security monitoring |
+| **Mermaid** | Architecture documentation |
 
-🧪 Test scripts in a dedicated laboratory.
+---
 
-🔍 Review every script before execution.
+ ## 📚 Documentation
 
-🔑 Use least-privilege administrative accounts where possible.
+ Additional documentation will be maintained under:
 
-💾 Maintain tested backup and recovery procedures.
+```
+/docs
+```
 
-📝 Maintain appropriate execution logs.
+ Planned documentation:
 
-🛡️ Validate changes against organizational security policies.
+ - Architecture
+- Installation
+- Hardening
+- Honeypot deployment
+- User provisioning
+- Auditing
+- Troubleshooting
+- Security considerations
+- Framework mappings
 
-🚫 Never execute unreviewed scripts directly against production infrastructure.
+---
 
-🔐 Never commit passwords, tokens, private keys, API keys, or other secrets.
+ ## 🤝 Contributing
 
-⚠️ Disclaimer
+ Contributions are welcome.
 
-PS-AD-Arsenal is intended for:
+ Before submitting a Pull Request:
 
-Authorized Active Directory administration
+ 1. Review the existing code.
+2. Follow PowerShell best practices.
+3. Add or update documentation.
+4. Include tests where applicable.
+5. Do not commit secrets or sensitive organizational information.
+6. Clearly describe the security and operational impact of the change.
 
-Security engineering
+---
 
-Defensive security testing
+ ## ⚖️ Responsible Use
 
-Educational purposes
+ PS-AD-Arsenal is intended for:
 
-Controlled laboratory environments
+ - Authorized administration
+- Security engineering
+- Defensive security
+- Controlled penetration-testing laboratories
+- Academic research
+- Enterprise security validation
 
-The author is not responsible for damage, data loss, service interruption, unauthorized access, or other consequences resulting from improper use of the toolkit.
+ Do not deploy these scripts against systems or environments without appropriate authorization.
 
-Always obtain appropriate authorization before performing security testing or configuration changes on systems you do not own or administer.
+ The repository author is not responsible for unauthorized use, service disruption, data loss, or security incidents resulting from improper deployment or modification of the toolkit.
 
-👨‍💻 Author
-Joaquín Ocampo
+---
 
-IT Support Engineering Student @ SENATI
-Aspiring SecOps & IAM Engineer
+ ## 👨‍💻 Author
 
-Passionate about:
+ **\[Your Full Name\]**
 
-🔐 Cybersecurity
+ _IT Support Engineering Student | SENATI_\
+ _Aspiring SecOps / Identity & Access Management Engineer_
 
-🛡️ Security Operations
+ - 📧 Email: `[your.email@example.com]`
+- 💼 LinkedIn: `[your-linkedin-profile]`
+- 🌐 Portfolio: `[your-portfolio-url]`
+- 🐙 GitHub: `[your-github-profile]`
 
-👤 Identity & Access Management
+---
 
-⚙️ Infrastructure Automation
+ ## 📄 License
 
-🪟 Windows Server & Active Directory
+ This project is licensed under the **MIT License**.
 
-🤖 AI-Assisted Engineering
+ See `LICENSE` for the complete license text.
 
-Contact
+---
 
-📧 Email: [webdev.student123@outlook.com]
+ \<div align="center"\> ### 🛡️ PS-AD-Arsenal
 
-💼 LinkedIn: [linkedin.com/in/joaquinocampo-cybersecurity]
+ **Automate. Harden. Audit. Detect.**
 
-🐙 GitHub: [github.com/CyberZenithAI]
+ _Built for authorized security engineering, Active Directory administration, and controlled security research._
 
-📄 License
-
-This project is licensed under the MIT License.
-
-See LICENSE for the complete license text.
-
-<div align="center">
-🛡️ PS-AD-Arsenal
-Automate. Harden. Audit. Detect.
-
-Built for authorized security engineering, Active Directory administration, and controlled security research.
-
-⭐ If this project is useful for learning or experimentation, consider giving it a star.
-
-</div>
+ \</div\>
