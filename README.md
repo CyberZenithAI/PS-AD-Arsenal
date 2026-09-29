@@ -593,9 +593,6 @@ $Credential = Get-Credential
 
  ## 👨‍💻 Author
 
- **\[ _IT Support Engineering Student | SENATI_\
- _Aspiring SecOps / Identity & Access Management Engineer_\]**
-
  _IT Support Engineering Student | SENATI_\
  _Aspiring SecOps / Identity & Access Management Engineer_
 
